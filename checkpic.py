@@ -5,11 +5,10 @@ from datetime import datetime, timedelta
 logging.basicConfig(filename='checkpic.log',level=logging.INFO)
 
 def run():
-   # Manually set
-   pic_address = 'https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-snc7/336_1026516179919_1782_n.jpg'
+   pic_address = "" # YOUR PHOTO HERE
    try:
       get_pic = urlopen(pic_address)
-      deleted_date = datetime(2013, 2, 26, 18, 00) # Manually set
+      deleted_date = datetime(YYYY, MM, DD, HH, MM) # YOUR DELETION DATE/TIME HERE
       diff = datetime.today() - deleted_date
       msg = ""
 
@@ -23,7 +22,8 @@ def run():
 
 
       if len(msg) > 0:
-         command = 'echo %s | mail -s "%s" jessicamdavid@gmail.com' % (msg, sub)
+         # This should work on Mac/Linux OSes. Feel free to play around with this line if you'd prefer something else
+         command = 'echo %s | mail -s "%s" YOUR_EMAIL_HERE' % (msg, sub)
          system(command)
          
    except IOError, ioex:
